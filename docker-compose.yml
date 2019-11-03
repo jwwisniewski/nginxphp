@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginxphp:/var/www/html
+      - ./nginxphp.conf:/etc/nginx/conf.d/nginxphp.conf
+  php:
+    image: php:7.3-fpm
+    volumes:
+      - ./nginxphp:/var/www/html
