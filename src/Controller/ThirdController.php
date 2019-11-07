@@ -1,18 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jwwisniewski
- * Date: 07/11/2019
- * Time: 23:27
- */
+
+declare(strict_types=1);
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
 
 class ThirdController
 {
-    public function index()
+    public function index(): Response
     {
-        $a = $r;
+        return new Response('works');
     }
 }
