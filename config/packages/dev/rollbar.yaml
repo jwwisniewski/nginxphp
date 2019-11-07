@@ -1,0 +1,5 @@
+rollbar:
+    enabled: true
+    access_token: '%env(string:ROLLBAR_ACCESS_TOKEN)%'
+    environment: 'dev'
+    root: '/var/www/html'

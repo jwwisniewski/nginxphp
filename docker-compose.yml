@@ -5,9 +5,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginxphp:/var/www/html
-      - ./nginxphp.conf:/etc/nginx/conf.d/nginxphp.conf
+      - .:/var/www/html
+      - ./nginx/sf4playground.conf:/etc/nginx/conf.d/sf4playground.conf
   php:
     image: php:7.3-fpm
     volumes:
-      - ./nginxphp:/var/www/html
+      - .:/var/www/html

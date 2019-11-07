@@ -1,4 +1,7 @@
 {
+    "monolog/monolog": {
+        "version": "1.25.1"
+    },
     "psr/cache": {
         "version": "1.0.1"
     },
@@ -7,6 +10,12 @@
     },
     "psr/log": {
         "version": "1.1.2"
+    },
+    "rollbar/rollbar": {
+        "version": "v1.8.1"
+    },
+    "rollbar/rollbar-php-symfony-bundle": {
+        "version": "v3.1.2"
     },
     "symfony/cache": {
         "version": "v4.3.6"
@@ -91,6 +100,23 @@
     "symfony/mime": {
         "version": "v4.3.6"
     },
+    "symfony/monolog-bridge": {
+        "version": "v4.3.6"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "6240c6d43e8237a32452f057f81816820fd56ab6"
+        },
+        "files": [
+            "config/packages/dev/monolog.yaml",
+            "config/packages/prod/monolog.yaml",
+            "config/packages/test/monolog.yaml"
+        ]
+    },
     "symfony/polyfill-intl-idn": {
         "version": "v1.12.0"
     },
@@ -116,6 +142,9 @@
             "config/packages/routing.yaml",
             "config/routes.yaml"
         ]
+    },
+    "symfony/serializer": {
+        "version": "v4.3.6"
     },
     "symfony/service-contracts": {
         "version": "v1.1.7"
