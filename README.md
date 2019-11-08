@@ -7,3 +7,4 @@ SF4 Docker playground
 - [ ] tests
 - [ ] CI deployment
 - [ ] CI in rollbar 
+- [ ] exclude var/cache from docker 
