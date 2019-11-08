@@ -8,6 +8,8 @@ services:
       - .:/var/www/html
       - ./nginx/sf4playground.conf:/etc/nginx/conf.d/sf4playground.conf
   php:
-    image: php:7.3-fpm
+    build: docker/php73fpm-xdebug
     volumes:
       - .:/var/www/html
+    environment:
+      XDEBUG_CONFIG: remote_host=192.168.0.18

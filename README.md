@@ -1,9 +1,9 @@
 # sf4playground
-SF4 Docker playgroung
+SF4 Docker playground
 
 ## TODO
-- xdebug
-- rollbar for prod
-- tests
-- CI deployment
-- ci in rollbar 
+- [x] xdebug
+- [ ] rollbar for prod
+- [ ] tests
+- [ ] CI deployment
+- [ ] CI in rollbar 
