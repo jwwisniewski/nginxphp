@@ -1,0 +1,6 @@
+version: 2
+jobs:
+  job1:
+    steps:
+    - checkout
+    - run: "make ci && make run-unit"
