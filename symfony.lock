@@ -17,6 +17,9 @@
     "rollbar/rollbar-php-symfony-bundle": {
         "version": "v3.1.2"
     },
+    "symfony/browser-kit": {
+        "version": "v4.3.6"
+    },
     "symfony/cache": {
         "version": "v4.3.6"
     },
@@ -39,10 +42,16 @@
             "config/bootstrap.php"
         ]
     },
+    "symfony/css-selector": {
+        "version": "v4.3.6"
+    },
     "symfony/debug": {
         "version": "v4.3.6"
     },
     "symfony/dependency-injection": {
+        "version": "v4.3.6"
+    },
+    "symfony/dom-crawler": {
         "version": "v4.3.6"
     },
     "symfony/dotenv": {
@@ -117,6 +126,22 @@
             "config/packages/test/monolog.yaml"
         ]
     },
+    "symfony/phpunit-bridge": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "b0582341f1df39aaf3a9a866cdbe49937da35984"
+        },
+        "files": [
+            ".env.test",
+            "bin/phpunit",
+            "config/bootstrap.php",
+            "phpunit.xml.dist",
+            "tests/.gitignore"
+        ]
+    },
     "symfony/polyfill-intl-idn": {
         "version": "v1.12.0"
     },
@@ -148,6 +173,9 @@
     },
     "symfony/service-contracts": {
         "version": "v1.1.7"
+    },
+    "symfony/test-pack": {
+        "version": "v1.0.6"
     },
     "symfony/var-exporter": {
         "version": "v4.3.6"

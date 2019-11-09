@@ -1,29 +1,28 @@
-composer-update:
-	docker run --rm -it -v ${PWD}:/app composer update
+p ?=
 
-composer-require:
-	docker run --rm -it -v ${PWD}:/app composer require $(package)
+ci:
+	docker-compose exec phpfpm composer install
 
-composer-remove:
-	docker run --rm -it -v ${PWD}:/app composer remove $(package)
+crq:
+	docker-compose exec phpfpm composer require $(p)
 
-composer-install:
-	docker run --rm -it -v ${PWD}:/app composer install
+cu:
+	docker-compose exec phpfpm composer update $(p)
 
-composer-create-web:
-	docker run --rm -it -v ${PWD}:/app composer create-project symfony/website-skeleton nginx
+crm:
+	docker-compose exec phpfpm composer remove $(p)
 
-composer-create:
-	docker run --rm -it -v ${PWD}:/app composer create-project symfony/skeleton nginx
+cda:
+	docker-compose exec phpfpm composer dump-autoload
 
 up:
-	docker-compose up -d
+	docker-compose up -d --remove-orphans
 
 down:
-	docker-compose down
+	docker-compose down --remove-orphans
 
 console:
-	docker-compose exec php bash
+	docker-compose exec phpfpm bash
 
-composer:
-	docker-compose exec composer bash
+run-unit:
+	docker-compose exec phpfpm php bin/phpunit
