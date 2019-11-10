@@ -14,11 +14,11 @@ jobs:
           name: Assume deploy is failed
           command: "echo \"export ROLLBAR_STATUS=failed\" >> $BASH_ENV"
       - deploy/notify_deploy_started:
-          environment: $ROLLBAR_ENVIRONMENT
+          environment: ${ROLLBAR_ENVIRONMENT}
       - checkout
       - run:
           name: Run unit tests
           command: "composer install && php bin/phpunit && echo \"export ROLLBAR_STATUS=succeeded\" >> $BASH_ENV"
       - deploy/notify_deploy_finished:
-          deploy_id: $ROLLBAR_DEPLOY_ID
-          status: $ROLLBAR_STATUS
+          deploy_id: ${ROLLBAR_DEPLOY_ID}
+          status: ${ROLLBAR_STATUS}
