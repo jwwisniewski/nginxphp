@@ -8,12 +8,12 @@ jobs:
     working_directory: ~/var/www/html
     steps:
       - run:
-          name: Notify start
+          name: Notify rollbar start
           command: deploy/notify_deploy_started
       - checkout
       - run:
           name: Run unit tests
           command: "composer install && php bin/phpunit"
       - run:
-          name: Notify finish
+          name: Notify rollbar finish
           command: deploy/notify_deploy_finished
