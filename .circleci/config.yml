@@ -8,7 +8,7 @@ jobs:
     working_directory: ~/var/www/html
     steps:
       - deploy/notify_deploy_started
-          environment: staging
+        environment: staging
       - checkout
       - run:
           name: Run unit tests
