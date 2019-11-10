@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -7,14 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Run unit tests
-        command: "composer install && php bin/phpunit"
+          name: Run unit tests
+          command: "composer install && php bin/phpunit"
       - run:
-        name: Deployment notification to Rollbar
-        command: |
-          curl https://api.rollbar.com/api/1/deploy/ \
-          -F access_token='$ROLLBAR_ACCESS_TOKEN' \
-          -F environment=production \
-          -F revision=$CIRCLE_SHA1 \
-          -F rollbar_username=$ROLLBAR_USERNAME \
-          -F local_username=$CIRCLE_USERNAME
+          name: Deployment notification to Rollbar
+          command: |
+            curl https://api.rollbar.com/api/1/deploy/ \
+            -F access_token='$ROLLBAR_ACCESS_TOKEN' \
+            -F environment=production \
+            -F revision=$CIRCLE_SHA1 \
+            -F rollbar_username=$ROLLBAR_USERNAME \
+            -F local_username=$CIRCLE_USERNAME
