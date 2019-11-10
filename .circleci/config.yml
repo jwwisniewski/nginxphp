@@ -1,6 +1,9 @@
 version: 2
 jobs:
-  job1:
+  build:
+    docker:
+      - image: joshrob/circleci-primary:latest
+    working_directory: ~/var/www/html
     steps:
-    - checkout
-    - run: "make ci && make run-unit"
+      - checkout
+      - run: "make ci && make run-unit"
