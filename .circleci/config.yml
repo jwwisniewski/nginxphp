@@ -6,8 +6,13 @@ jobs:
     working_directory: ~/var/www/html
     steps:
       - checkout
-      - run: "composer install && php bin/phpunit"
-      - run: curl https://api.rollbar.com/api/1/deploy/ \
+      - run:
+        name: Run unit tests
+        command: "composer install && php bin/phpunit"
+      - run:
+        name: Deployment notification to Rollbar
+        command: |
+          curl https://api.rollbar.com/api/1/deploy/ \
           -F access_token='$ROLLBAR_ACCESS_TOKEN' \
           -F environment=production \
           -F revision=$CIRCLE_SHA1 \
