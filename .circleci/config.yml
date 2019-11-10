@@ -10,15 +10,23 @@ jobs:
     environment:
       ROLLBAR_ENVIRONMENT: development
     steps:
-      - run:
-          name: Assume deploy is failed
-          command: "echo \"export ROLLBAR_STATUS=failed\" >> $BASH_ENV"
       - deploy/notify_deploy_started:
           environment: ${ROLLBAR_ENVIRONMENT}
       - checkout
       - run:
           name: Run unit tests
           command: "composer install && php bin/phpunit && echo \"export ROLLBAR_STATUS=succeeded\" >> $BASH_ENV"
-      - deploy/notify_deploy_finished:
-          deploy_id: ${ROLLBAR_DEPLOY_ID}
-          status: ${ROLLBAR_STATUS}
+      - run:
+          name: Rollbar - Notify Deploy Succeeded
+          command: |
+            curl -X PATCH \
+            https://api.rollbar.com/api/1/deploy/$ROLLBAR_DEPLOY_ID?access_token=$ROLLBAR_ACCESS_TOKEN \
+              --data '{"status":"succeeded"}'
+          when: on_success
+      - run:
+          name: Rollbar - Notify Deploy Failed
+          command: |
+            curl -X PATCH \
+            https://api.rollbar.com/api/1/deploy/$ROLLBAR_DEPLOY_ID?access_token=$ROLLBAR_ACCESS_TOKEN \
+              --data '{"status":"failed"}'
+          when: on_fail
