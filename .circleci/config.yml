@@ -7,8 +7,8 @@ jobs:
       - image: joshrob/circleci-primary:latest
     working_directory: ~/var/www/html
     steps:
-      - deploy/notify_deploy_started
-        environment: staging
+      - deploy/notify_deploy_started:
+          environment: staging
       - checkout
       - run:
           name: Run unit tests
