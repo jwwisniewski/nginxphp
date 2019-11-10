@@ -7,3 +7,9 @@ jobs:
     steps:
       - checkout
       - run: "composer install && php bin/phpunit"
+      - run: curl https://api.rollbar.com/api/1/deploy/ \
+          -F access_token='$ROLLBAR_ACCESS_TOKEN' \
+          -F environment=production \
+          -F revision=$CIRCLE_SHA1 \
+          -F rollbar_username=$ROLLBAR_USERNAME \
+          -F local_username=$CIRCLE_USERNAME
