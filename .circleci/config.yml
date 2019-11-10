@@ -5,6 +5,7 @@ jobs:
   build:
     docker:
       - image: joshrob/circleci-primary:latest
+    resource_class: small
     working_directory: ~/var/www/html
     environment:
       ROLLBAR_ENVIRONMENT: development
