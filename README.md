@@ -2,9 +2,9 @@
 SF4 Docker playground
 
 ## TODO
-- [x] xdebug
-- [ ] rollbar for prod
-- [x] phpunit
-- [ ] CI deployment
+- [x] enable xdebug
+- [ ] run rollbar for prod environment
+- [x] add phpunit
+- [x] run tests in CI during push [![CircleCI](https://circleci.com/gh/jwwisniewski/sf4playground.svg?style=svg)](https://circleci.com/gh/jwwisniewski/sf4playground)
 - [ ] CI in rollbar 
 - [ ] exclude var/cache from docker 
