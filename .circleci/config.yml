@@ -19,3 +19,7 @@ jobs:
       - deploy/notify_deploy_finished:
           deploy_id: $ROLLBAR_DEPLOY_ID
           status: succeeded
+      - deploy/notify_deploy_finished:
+          deploy_id: $ROLLBAR_DEPLOY_ID
+          status: failed
+          when: on_fail
