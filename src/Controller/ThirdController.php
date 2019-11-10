@@ -10,6 +10,6 @@ class ThirdController
 {
     public function index(): Response
     {
-        return new Response('works');
+        return new Response('Really works!');
     }
 }

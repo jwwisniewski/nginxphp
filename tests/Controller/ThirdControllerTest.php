@@ -18,6 +18,6 @@ class ThirdControllerTest extends WebTestCase
         $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertEquals('works', $client->getResponse()->getContent());
+        $this->assertEquals('Really works!', $client->getResponse()->getContent());
     }
 }
