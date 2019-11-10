@@ -1,20 +1,19 @@
 version: 2.1
+orbs:
+  deploy: rollbar/deploy@1.0.1
 jobs:
   build:
     docker:
       - image: joshrob/circleci-primary:latest
     working_directory: ~/var/www/html
     steps:
+      - run:
+          name: Notify start
+          command: deploy/notify_deploy_started
       - checkout
       - run:
           name: Run unit tests
           command: "composer install && php bin/phpunit"
       - run:
-          name: Deployment notification to Rollbar
-          command: |
-            curl https://api.rollbar.com/api/1/deploy/ \
-            -F access_token=$ROLLBAR_ACCESS_TOKEN \
-            -F environment=production \
-            -F revision=$CIRCLE_SHA1 \
-            -F rollbar_username=$ROLLBAR_USERNAME \
-            -F local_username=$CIRCLE_USERNAME
+          name: Notify finish
+          command: deploy/notify_deploy_finished
