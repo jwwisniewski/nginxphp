@@ -6,4 +6,4 @@ jobs:
     working_directory: ~/var/www/html
     steps:
       - checkout
-      - run: "make ci && make run-unit"
+      - run: "composer install && php bin/phpunit"
