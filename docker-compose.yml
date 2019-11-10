@@ -9,7 +9,7 @@ services:
       - ./nginx/sf4playground.conf:/etc/nginx/conf.d/sf4playground.conf
 
   phpfpm:
-    build: docker/php73fpm-xdebug
+    image: joshrob/php73fpm
     volumes:
       - .:/var/www/html
     environment:
