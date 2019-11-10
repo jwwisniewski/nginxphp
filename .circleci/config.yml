@@ -7,9 +7,8 @@ jobs:
       - image: joshrob/circleci-primary:latest
     working_directory: ~/var/www/html
     steps:
-      - run:
-          name: Notify rollbar start
-          command: deploy/notify_deploy_started
+      - deploy/notify_deploy_started
+          environment: staging
       - checkout
       - run:
           name: Run unit tests
