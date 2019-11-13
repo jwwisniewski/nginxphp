@@ -2,11 +2,11 @@ version: "3.7"
 services:
   nginx:
     image: nginx:alpine
-    ports:
-      - "80:80"
     volumes:
       - .:/var/www/html
       - ./nginx/sf4playground.conf:/etc/nginx/conf.d/sf4playground.conf
+    environment:
+      VIRTUAL_HOST: sf4playground.docker
 
   phpfpm:
     image: joshrob/php73fpm
@@ -25,5 +25,5 @@ services:
 
   adminer:
     image: adminer
-    ports:
-      - "8080:8080"
+    environment:
+      VIRTUAL_HOST: adminer.docker
