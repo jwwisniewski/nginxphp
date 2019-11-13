@@ -14,3 +14,16 @@ services:
       - .:/var/www/html
     environment:
       XDEBUG_CONFIG: remote_host=192.168.0.18
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sf4playground
+    volumes:
+      - ~/docker_dev_mysql:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
