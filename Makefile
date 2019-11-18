@@ -24,5 +24,19 @@ down:
 console:
 	docker-compose exec phpfpm bash
 
-run-unit:
-	docker-compose exec phpfpm php bin/phpunit
+unit-up:
+	docker-compose -f docker-compose-test.yml up -d
+
+unit-down:
+	docker-compose -f docker-compose-test.yml down --volumes || \
+	docker-compose -f docker-compose-test.yml down --volumes
+
+unit-run: unit-up
+	docker-compose -f docker-compose-test.yml exec -e APP_ENV=test phpfpm_test \
+		php bin/console doctrine:migrations:migrate --no-interaction
+	docker-compose -f docker-compose-test.yml exec -e APP_ENV=test phpfpm_test \
+		php bin/console doctrine:fixtures:load --no-interaction
+	docker-compose -f docker-compose-test.yml exec -e APP_ENV=test phpfpm_test \
+		php bin/phpunit
+
+tests: unit-run unit-down

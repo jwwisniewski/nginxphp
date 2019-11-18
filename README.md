@@ -9,6 +9,7 @@ SF4 Docker playground
 - [x] run tests in CI during push [![CircleCI](https://circleci.com/gh/jwwisniewski/sf4playground.svg?style=svg)](https://circleci.com/gh/jwwisniewski/sf4playground)
 - [x] inform rollbar about deployment
 - [ ] exclude var/cache from docker 
-- [ ] set up database connection
+- [x] set up database connection
+- [ ] run database tests in CI during push
 - [ ] expand CI workflows 
-- [ ] configure docker reverse proxy
+- [x] configure docker dns and reverse proxy (done with dory)

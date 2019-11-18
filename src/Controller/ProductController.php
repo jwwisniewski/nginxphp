@@ -44,7 +44,7 @@ class ProductController extends AbstractController
             );
         }
 
-        return new Response('Check out this great product: ' . $product->getTitle() . ' for ' . $product->getPrice());
+        return new Response('Check out this great product: "' . $product->getTitle() . '" for ' . $product->getPrice());
     }
 
     /**

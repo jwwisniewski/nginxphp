@@ -7,6 +7,8 @@ services:
       - ./nginx/sf4playground.conf:/etc/nginx/conf.d/sf4playground.conf
     environment:
       VIRTUAL_HOST: sf4playground.docker
+    networks:
+      - network
 
   phpfpm:
     image: joshrob/php73fpm
@@ -14,6 +16,8 @@ services:
       - .:/var/www/html
     environment:
       XDEBUG_CONFIG: remote_host=192.168.0.18
+    networks:
+      - network
 
   database:
     image: mysql:5.7
@@ -21,9 +25,19 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sf4playground
     volumes:
-      - ~/docker_dev_mysql:/var/lib/mysql
+      - data_volume:/var/lib/mysql
+    networks:
+      - network
 
   adminer:
     image: adminer
     environment:
       VIRTUAL_HOST: adminer.docker
+    networks:
+      - network
+
+volumes:
+  data_volume:
+
+networks:
+  network:
