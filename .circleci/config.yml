@@ -29,3 +29,8 @@ jobs:
             php bin/console doctrine:migrations:migrate --no-interaction -vvv --env=test
             php bin/console doctrine:fixtures:load --no-interaction
             php bin/phpunit
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
