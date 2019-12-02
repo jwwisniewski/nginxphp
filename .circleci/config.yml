@@ -1,46 +1,31 @@
-version: 2.1
-orbs:
-  deploy: rollbar/deploy@1.0.1
+version: 2
 jobs:
   build:
     docker:
-    - image: joshrob/circleci-primary:latest
-      environment:
-        APP_ENV: test
-        DATABASE_URL: "mysql://test:test@localhost:3306/test"
-    - image: circleci/mysql:5.7
-      environment:
-        MYSQL_USER: test
-        MYSQL_PASSWORD: test
-        MYSQL_ROOT_PASSWORD: test
-        MYSQL_DATABASE: test
+      - image: joshrob/circleci-primary:latest
+        environment:
+          APP_ENV: test
+          DATABASE_URL: "mysql://test:test@127.0.0.1:3306/test"
+      - image: mysql:5.7
+        environment:
+          MYSQL_USER: test
+          MYSQL_PASSWORD: test
+          MYSQL_ROOT_PASSWORD: test
+          MYSQL_DATABASE: test
     resource_class: small
     working_directory: ~/var/www/html
     environment:
       ROLLBAR_ENVIRONMENT: development
     steps:
-      - deploy/notify_deploy_started:
-          environment: ${ROLLBAR_ENVIRONMENT}
       - checkout
+      - run:
+          name: Wait for the database
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
           name: Run unit tests
           command: |
             env
             composer install
-            php bin/console doctrine:migrations:migrate --no-interaction -vvv
+            php bin/console doctrine:migrations:migrate --no-interaction -vvv --env=test
             php bin/console doctrine:fixtures:load --no-interaction
             php bin/phpunit
-      - run:
-          name: Rollbar - Notify Deploy Succeeded
-          command: |
-            curl -X PATCH \
-            https://api.rollbar.com/api/1/deploy/$ROLLBAR_DEPLOY_ID?access_token=$ROLLBAR_ACCESS_TOKEN \
-              --data '{"status":"succeeded"}'
-          when: on_success
-      - run:
-          name: Rollbar - Notify Deploy Failed
-          command: |
-            curl -X PATCH \
-            https://api.rollbar.com/api/1/deploy/$ROLLBAR_DEPLOY_ID?access_token=$ROLLBAR_ACCESS_TOKEN \
-              --data '{"status":"failed"}'
-          when: on_fail
