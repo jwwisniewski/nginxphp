@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c77a99da9a19e6dc42a9f8e0e8fe682",
+    "content-hash": "448824cab473aee4912046867a31a9df",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -4346,16 +4346,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v5.2.9",
+            "version": "v5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "d23115e4a3d50520abddccdbec9514baab1084c8"
+                "reference": "3bbcf262fceb3d8f48175302e6ba0ac96e3a5a11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/d23115e4a3d50520abddccdbec9514baab1084c8",
-                "reference": "d23115e4a3d50520abddccdbec9514baab1084c8",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/3bbcf262fceb3d8f48175302e6ba0ac96e3a5a11",
+                "reference": "3bbcf262fceb3d8f48175302e6ba0ac96e3a5a11",
                 "shasum": ""
             },
             "require": {
@@ -4414,7 +4414,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-16T13:07:46+00:00"
+            "time": "2021-05-26T17:43:10+00:00"
         },
         {
             "name": "zendframework/zend-code",
